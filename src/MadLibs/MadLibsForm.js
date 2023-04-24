@@ -12,12 +12,20 @@ const MadLibsForm = () => {
       color: ''
    })
 
+   const saveToLocal = () => {
+      localStorage.setItem('noun_1', formData.noun_1)
+      localStorage.setItem('noun_2', formData.noun_2)
+      localStorage.setItem('adjective', formData.adjective)
+      localStorage.setItem('color', formData.color)
+   }
+
    const [storyVisible, setStoryVisible] = useToggleState(false)
 
    const handleSubmit = e => {
+      saveToLocal();
       e.preventDefault();
-      setStoryVisible(story => !story)
-      return <Story />
+      setStoryVisible();
+      resetForm();
    }
 
    return (
@@ -50,7 +58,7 @@ const MadLibsForm = () => {
          placeholder={'color'}/>
          <button className='btn btn-secondary'>Get Story</button>
       </form>
-      <span className={storyVisible? 'Visible-Story' : 'Invisible-Story'}>The {formData.adjective} {formData.noun_1} ran up to the {formData.color} {formData.noun_2} and say 'Yo'.</span>
+      <span className={storyVisible? 'Visible-Story' : 'Invisible-Story'}>The {localStorage.adjective} {localStorage.noun_1} ran up to the {localStorage.color} {localStorage.noun_2} and say 'Yo'.</span>
       </>
    )
 }
