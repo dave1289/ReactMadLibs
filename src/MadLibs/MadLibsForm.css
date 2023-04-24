@@ -1,0 +1,9 @@
+.MadLibsForm {
+   width: 200px;
+   margin: auto;
+   margin-top: 8vh;
+}
+
+.MadLibsForm input{
+   margin: 15px 0 15px 0;
+}
