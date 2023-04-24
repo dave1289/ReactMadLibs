@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useFields from '../hooks/useFields';
 import './MadLibsForm.css'
+import useToggleState from '../hooks/useToggle';
+import Story from './Story';
 
 const MadLibsForm = () => {
    const [formData, handleChange, resetForm] = useFields({
@@ -10,11 +12,16 @@ const MadLibsForm = () => {
       color: ''
    })
 
+   const [storyVisible, setStoryVisible] = useToggleState(false)
+
    const handleSubmit = e => {
       e.preventDefault();
-      resetForm();
+      setStoryVisible(story => !story)
+      return <Story />
    }
+
    return (
+      <>
       <form className='MadLibsForm' onSubmit={handleSubmit}>
          <input
          type='text'
@@ -43,6 +50,8 @@ const MadLibsForm = () => {
          placeholder={'color'}/>
          <button className='btn btn-secondary'>Get Story</button>
       </form>
+      <span className={storyVisible? 'Visible-Story' : 'Invisible-Story'}>The {formData.adjective} {formData.noun_1} ran up to the {formData.color} {formData.noun_2} and say 'Yo'.</span>
+      </>
    )
 }
 

@@ -7,6 +7,7 @@ const MadLibs = () => {
       <div className='MadLibs'>
          <h1 className='display-1'>MadLibs</h1>
          <MadLibsForm />
+         <Story />
       </div>
    )
 }

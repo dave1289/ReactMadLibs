@@ -7,3 +7,11 @@
 .MadLibsForm input{
    margin: 15px 0 15px 0;
 }
+
+.Visible-Story {
+   display: inline-block
+}
+
+.Invisible-Story {
+   display: none;
+}
