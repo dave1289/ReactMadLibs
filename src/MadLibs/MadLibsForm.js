@@ -20,17 +20,19 @@ const MadLibsForm = () => {
    }
 
    const [storyVisible, setStoryVisible] = useToggleState(false)
+   const [formVisible, setFormVisible] = useToggleState(true)
 
    const handleSubmit = e => {
       saveToLocal();
       e.preventDefault();
+      setFormVisible();
       setStoryVisible();
       resetForm();
    }
 
    return (
       <>
-      <form className='MadLibsForm' onSubmit={handleSubmit}>
+      <form className={formVisible? 'visible' : 'invisible'} onSubmit={handleSubmit}>
          <input
          type='text'
          name='noun_1'
